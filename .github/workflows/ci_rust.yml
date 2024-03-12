@@ -8,6 +8,9 @@ jobs:
   build:
     name: "Build"
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./typestate-builder-rust
     steps:
       - uses: actions/checkout@v3
       - name: Check
