@@ -2,6 +2,7 @@ use utils::{Basement, Door, Garage, Wall, Window};
 
 mod utils;
 
+#[derive(Debug)]
 struct House {
     walls: Vec<Wall>,
     doors: Vec<Door>,
@@ -61,7 +62,19 @@ impl HouseBuilder {
 }
 
 fn main() {
-    println!("Hello, world!");
+    let house = HouseBuilder::new()
+        .walls(vec![Wall {}])
+        .doors(vec![Door {}])
+        .garage(Garage {})
+        .basement(Basement {})
+        .windows(vec![Window {}])
+        .build();
+    println!("{:?}", house);
+    println!("{}", house.walls.len() != 0);
+    println!("{}", house.doors.len() != 0);
+    println!("{}", house.garage.is_none());
+    println!("{}", house.basement.is_none());
+    println!("{}", house.windows.is_none());
 }
 
 #[cfg(test)]
@@ -77,7 +90,12 @@ mod test {
             .walls(vec![Wall {}])
             .doors(vec![Door {}])
             .build();
+        assert!(house.walls.len() != 0);
         assert!(house.doors.len() != 0);
+        assert!(house.garage.is_none());
+        assert!(house.basement.is_none());
+        assert!(house.windows.is_none());
+
         Ok(())
     }
 }
