@@ -70,8 +70,8 @@ fn main() {
         .windows(vec![Window {}])
         .build();
     println!("{:?}", house);
-    println!("{}", house.walls.len() != 0);
-    println!("{}", house.doors.len() != 0);
+    println!("{}", !house.walls.is_empty());
+    println!("{}", !house.doors.is_empty());
     println!("{}", house.garage.is_none());
     println!("{}", house.basement.is_none());
     println!("{}", house.windows.is_none());
@@ -90,8 +90,8 @@ mod test {
             .walls(vec![Wall {}])
             .doors(vec![Door {}])
             .build();
-        assert!(house.walls.len() != 0);
-        assert!(house.doors.len() != 0);
+        assert!(!house.walls.is_empty());
+        assert!(!house.doors.is_empty());
         assert!(house.garage.is_none());
         assert!(house.basement.is_none());
         assert!(house.windows.is_none());
