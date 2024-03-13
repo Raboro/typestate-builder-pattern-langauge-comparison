@@ -1,0 +1,35 @@
+name: "CI_Java"
+
+on:
+  push:
+    branches: "*"
+
+jobs:
+  test:
+    name: "Test"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./typestate-builder-java
+    steps:
+      - uses: actions/checkout@v3
+      - name: Validate
+        run: mvn validate
+
+      - name: Compile
+        run: mvn compile
+
+      - name: Test
+        run: mvn test
+
+  package:
+    name: "Test"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./typestate-builder-java
+    steps:
+      - uses: actions/checkout@v3
+      - name: Package
+        run: mvn package
+
