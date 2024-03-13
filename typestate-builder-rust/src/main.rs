@@ -1,8 +1,9 @@
 use utils::{Basement, Door, Garage, Wall, Window};
 
-use crate::builder::HouseBuilder;
+use crate::{builder::HouseBuilder, type_state_builder::HouseTypeStateBuilder};
 
 mod builder;
+mod type_state_builder;
 mod utils;
 
 fn main() {
@@ -19,4 +20,20 @@ fn main() {
     println!("{}", house.garage.is_none());
     println!("{}", house.basement.is_none());
     println!("{}", house.windows.is_none());
+
+    let house_type_state_builder: HouseTypeStateBuilder<
+        type_state_builder::Walls,
+        type_state_builder::Doors,
+    > = HouseTypeStateBuilder::new()
+        .walls(vec![Wall {}])
+        .doors(vec![Door {}]);
+
+    println!(
+        "{:?}",
+        house_type_state_builder
+            .garage(Garage {})
+            .basement(Basement {})
+            .windows(vec![Window {}])
+            .build()
+    );
 }
