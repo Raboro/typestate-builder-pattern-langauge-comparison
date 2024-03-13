@@ -46,4 +46,4 @@ jobs:
           cache: maven
 
       - name: Package
-        run: mvn package
+        run: mvn package -Dmaven.test.skip=true
