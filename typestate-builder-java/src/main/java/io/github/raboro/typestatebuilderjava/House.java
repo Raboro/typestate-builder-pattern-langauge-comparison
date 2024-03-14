@@ -18,6 +18,12 @@ public class House {
         this.windows = windows;
     }
 
+    @Override
+    public String toString() {
+        return "House{walls=%s, doors=%s, garage=%s, basement=%s, windows=%s}"
+                .formatted(walls, doors, garage, basement, windows);
+    }
+
     public record Wall() {}
 
     public record Door() {}
