@@ -1,0 +1,17 @@
+name: "CI_Rust"
+
+on:
+  push:
+    branches: "*"
+
+jobs:
+  build:
+    name: "Build"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./typestate-builder-ts
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build
+        run: npm run build
