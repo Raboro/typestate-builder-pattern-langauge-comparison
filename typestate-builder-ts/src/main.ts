@@ -1,4 +1,10 @@
-import { House } from "./utils";
+import { HouseBuilder } from "./houseBuilder";
 
-const house = new House([], [], "Garage", "Basement");
+const house = HouseBuilder.new()
+  .setWalls([])
+  .setDoors([])
+  .setBasement("Basement")
+  .setGarage("Garage")
+  .build();
+
 console.log(house);

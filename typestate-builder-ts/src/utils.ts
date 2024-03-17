@@ -10,6 +10,6 @@ export class House {
     readonly doors: Door[],
     readonly garage?: Garage,
     readonly basement?: Basement,
-    readonly window?: _Window
+    readonly windows?: _Window[]
   ) {}
 }
